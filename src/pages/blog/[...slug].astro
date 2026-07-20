@@ -1,0 +1,54 @@
+---
+// src/pages/blog/[...slug].astro
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.id }, 
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+// Render integrato per il Content Layer di Astro v4/v5/v6
+const { Content } = await render(entry); 
+---
+
+<Layout title={`${entry.data.title} | Davide Scarpa`}>
+  <!-- 
+    Sezione pulita: eredita lo sfondo globale dal Layout.
+    pt-36 mantiene la distanza corretta dall'header.
+  -->
+  <section class="relative pt-36 pb-32 text-white min-h-screen">
+    
+    <article class="max-w-3xl mx-auto px-6 text-white prose prose-invert prose-cyan lg:prose-lg">
+      
+      <!-- Data di Pubblicazione -->
+      <span class="text-cyan-400 font-mono text-sm block mb-3">
+        {entry.data.pubDate.toLocaleDateString('it-IT', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </span>
+      
+      <!-- Titolo Articolo -->
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mt-2 mb-8 text-white leading-tight">
+        {entry.data.title}
+      </h1>
+      
+      <!-- Immagine di Copertina (se presente) -->
+      {entry.data.image && (
+        <img 
+          src={entry.data.image} 
+          class="w-full rounded-3xl mb-12 object-cover max-h-[450px] shadow-2xl border border-white/5" 
+          alt={entry.data.title} 
+        />
+      )}
+      
+      <!-- Corpo dell'Articolo gestito da Tailwind Typography (prose) -->
+      <div class="leading-relaxed text-slate-300 selection:bg-cyan-500 selection:text-slate-950">
+        <Content />
+      </div>
+      
+    </article>
+  </section>
+</Layout>

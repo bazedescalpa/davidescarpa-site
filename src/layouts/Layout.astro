@@ -1,0 +1,68 @@
+---
+// src/layouts/Layout.astro
+import '../styles/global.css';
+import Header from '../components/Header.astro'; 
+import Footer from '../components/Footer.astro'; 
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth m-0 p-0">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Davide Scarpa - Soluzioni Web professionali. Sviluppo siti web, web app e applicazioni mobile su misura." />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
+		<title>{title}</title>
+		
+		<!-- Pre-impostazione colore di sfondo -->
+		<style is:inline>
+			html { background-color: #020617; }
+		</style>
+	</head>
+
+<body class="bg-transparent text-slate-100 antialiased min-h-screen m-0 p-0 overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950">
+    
+    <!-- Sfondo FISSO globale -->
+    <div class="fixed inset-0 -z-50 w-full h-full overflow-hidden bg-slate-950">
+        <img 
+            src="/sfondotech.webp" 
+            alt="Sfondo tecnologico" 
+            class="parallax-bg absolute inset-0 w-full h-[130vh] object-cover object-top transition-transform duration-[50ms] ease-out" 
+        />
+        <!-- Overlay scuro -->
+        <div class="absolute inset-0 bg-slate-950/80"></div>
+    </div>
+
+    <Header />
+
+    <main class="w-full relative">
+        <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const bg = document.querySelector('.parallax-bg') as HTMLElement;
+            if (bg) {
+                const yOffset = scrolled * 0.1;
+                bg.style.transform = `translate3d(0, -${yOffset}px, 0)`;
+            }
+        }, { passive: true });
+    </script>
+</body>
+
+</html>
+
+<style is:global>
+	:root {
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	}
+</style>
