@@ -10,6 +10,9 @@ interface Props {
 }
 
 const { title, isBlog = false } = Astro.props;
+
+// Rileva automaticamente se siamo in una pagina del blog tramite l'URL
+const isBlogPage = isBlog || Astro.url.pathname.startsWith('/blog');
 ---
 
 <!DOCTYPE html>
@@ -59,10 +62,10 @@ const { title, isBlog = false } = Astro.props;
 
     <Footer />
 
-    <!-- Pulsante di contatto mobile fluttuante (Nascosto nel blog se isBlog è true) -->
-    {!isBlog && (
+    <!-- Pulsante di contatto mobile fluttuante (Escluso automaticamente nel blog) -->
+    {!isBlogPage && (
         <div class="fixed bottom-6 right-6 z-50 md:hidden">
-            <a href="mailto:info@davidescarpa.com?subject=Richiesta%20Informazioni" 
+            <a href="mailto:info@davidescarpa.com?subject=Richiesta%2520Informazioni" 
                class="flex items-center bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-5 py-3 rounded-xl shadow-lg shadow-cyan-500/20 transition-all duration-200 active:scale-95">
                 <span>Inizia il tuo progetto</span>
             </a>
