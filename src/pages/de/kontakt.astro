@@ -1,0 +1,278 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileActionBar from '../../components/MobileActionBar.astro';
+---
+
+<Layout 
+  title="Kontakt & Buchungen | Ayuwellness Cagliari und Villasimius" 
+  description="Kontaktieren Sie Federica Ennas, um eine ayurvedische Massage in Cagliari oder den Hausbesuch-Service in Villasimius zu buchen. Rufen Sie an oder schreiben Sie auf WhatsApp."
+>
+  <Header />
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="sub-badge">Lassen Sie uns &uuml;ber Wohlbefinden sprechen</span>
+        <h1>Kontakt</h1>
+        <p class="subtitle">Sowohl in Cagliari als auch in Villasimius stehen wir Ihnen f&uuml;r Informationen, Beratungen und Buchungen zur Verf&uuml;gung.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contacts-layout">
+        
+        <!-- Sezione Informazioni e Mappe -->
+        <div class="contact-info">
+          <h2>Unsere Kontaktdaten</h2>
+          <p>Sie k&ouml;nnen uns telefonisch oder &uuml;ber WhatsApp kontaktieren, um Ihren Termin zu vereinbaren oder einen besonderen Service zu buchen.</p>
+          
+          <div class="maps-grid">
+            <!-- Studio Cagliari -->
+            <div class="info-card">
+              <div class="card-header-content">
+                <h3>Studio Cagliari (Winter)</h3>
+                <p>Via Basilicata, 61 - 09049 Cagliari (CA)</p>
+              </div>
+              
+              <div class="map-container">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3090.5761195967484!2d9.11096277662548!3d39.22979167165489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e735655dae228f%3A0xa96f35b789b7e20b!2sAyuwellness%20Lusso%20per%20la%20mente%20Olistic%20studio!5e0!3m2!1sit!2sit!4v1790583896448!5m2!1sit!2sit" 
+                  width="100%" 
+                  height="320" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Karte des Studios Cagliari"
+                ></iframe>
+              </div>
+            </div>
+
+            <!-- Villasimius & Costa Rei -->
+            <div class="info-card">
+              <div class="card-header-content">
+                <h3>Villasimius & Costa Rei (Sommer)</h3>
+                <p>Hausbesuch-Massageservice an der s&uuml;d&ouml;stlichen K&uuml;ste aktiv.</p>
+              </div>
+              
+              <div class="map-container">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3094.395675446996!2d9.516684476622135!3d39.14298127167267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e0c34952463e43%3A0x5daf5e880379ed84!2sAyuwellness!5e0!3m2!1sit!2sit!4v1791961702728!5m2!1sit!2sit" 
+                  width="100%" 
+                  height="320" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Karte Villasimius"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sezione Prenota Subito -->
+        <div class="contact-cta-box">
+          <h3>Jetzt Buchen</h3>
+          <p>Der schnellste Weg, um Datum und Uhrzeit Ihrer Behandlung zu vereinbaren, ist ein direkter Anruf oder eine Nachricht.</p>
+          <div class="buttons-stack">
+            <a href="tel:+393270567128" class="btn-primary">
+              Anrufen <span class="phone-number">+39 327 056 7128</span>
+            </a>
+            <a href="https://wa.me/393270567128" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Auf WhatsApp schreiben</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <MobileActionBar />
+</Layout>
+
+<style>
+  main {
+    background-color: #ffffff !important;
+  }
+
+  .page-header {
+    padding: 5rem 0 3rem 0;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .sub-badge {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+    color: #c4a724 !important;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  .section {
+    padding: 4rem 0 6rem 0;
+    background-color: transparent;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .contacts-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .contact-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #c4a724 !important;
+  }
+
+  .contact-info > p {
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+  }
+
+  .maps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: stretch;
+  }
+
+  .info-card {
+    background-color: #faf8f5;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(44, 42, 41, 0.04);
+    border: none !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header-content {
+    margin-bottom: 1.25rem;
+  }
+
+  .info-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+  }
+
+  .card-header-content p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .map-container {
+    margin-top: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    border: none !important;
+  }
+
+  .contact-cta-box {
+    background-color: var(--accent-light);
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto 0 auto;
+    width: 100%;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .contact-cta-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+  }
+
+  .contact-cta-box p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttons-stack {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .btn-primary, .btn-whatsapp {
+    padding: 0.9rem 2.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-primary:hover, .btn-whatsapp:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(163, 139, 116, 0.2);
+  }
+
+  .btn-whatsapp {
+    background-color: #25D366;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+  }
+
+  .phone-number {
+    display: inline;
+  }
+
+  @media (max-width: 900px) {
+    .maps-grid {
+      grid-template-columns: 1fr;
+    }
+    .buttons-stack {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .map-container iframe {
+      height: 280px;
+    }
+    .btn-primary .phone-number {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+    }
+  }
+</style>

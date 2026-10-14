@@ -1,0 +1,381 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileActionBar from '../../components/MobileActionBar.astro';
+
+import filosofiaBg from '../../assets/evento.webp';
+
+// Selected real reviews translated to English
+const reviews = [
+  {
+    name: "Paolo A.",
+    text: "An excellent massage center in the heart of Cagliari! Refined, fragrant, and deeply relaxing atmosphere. I greatly appreciated Federica's professional approach and kindness. The treatment was flawless: intense yet delicate, perfect for regaining well-being and energy. Highly recommended!",
+    rating: 5
+  },
+  {
+    name: "Luigi V.",
+    text: "I had the pleasure of experiencing an Ayurvedic massage with Federica, and the experience was truly exceptional. From the very first moment, you feel great professionalism and passion. The treatment was deeply relaxing and effective in releasing tension and stress. Highly recommended!",
+    rating: 5
+  },
+  {
+    name: "Maurizio B.",
+    text: "Excellent holistic experience. Federica was skilled and professional. The facility is modern, clean, and well-organized. The massage menu is rich and innovative. I tried an Ayurvedic massage and it was 40 minutes of pure relaxation. Highly recommended!",
+    rating: 5
+  },
+  {
+    name: "Alessandro S.",
+    text: "Entering Ayuwellness means giving yourself a moment of true well-being. The studio is wonderful: warm, harmonious environments where every detail calls upon the relaxing atmosphere of Ayurvedic treatments. Federica is an exceptional professional!",
+    rating: 5
+  },
+  {
+    name: "Gloria P.",
+    text: "Wonderful experience, Federica is professional and friendly. I immediately felt at ease. I loved the leg and foot massage; she focused on every single part. I had never tried an Ayurvedic massage and I am so glad it was gifted to me. I will definitely come back!",
+    rating: 5
+  }
+];
+
+const duplicatedReviews = [...reviews, ...reviews];
+---
+
+<Layout 
+  title="About Me - Federica Ennas | Ayuwellness Cagliari" 
+  description="Certified Ayurveda practitioner with over ten years of experience across Forte Village and international spas. Discover Federica Ennas' journey."
+>
+  <Header />
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="sub-badge">Introduction</span>
+        <h1>Federica Ennas</h1>
+        <p class="subtitle">Certified Ayurveda practitioner and holistic wellness professional.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-2">
+        <div class="bio-content">
+          <h2>Over ten years of experience dedicated to wellness</h2>
+          <p>
+            My journey in holistic wellness stems from the deep conviction that mind and body are in a constant, delicate conversation. Caring for a person authentically requires combining empathetic listening with solid technical expertise.
+          </p>
+          <p>
+            Over the years, I have built my professional experience working in world-class environments, including the renowned <strong>Forte Village</strong> resort, luxury cruise liners, and high-end international spas.
+          </p>
+          
+          <div class="qualifiche-box">
+            <h3>Training & Qualifications</h3>
+            <ul>
+              <li>Esthetician Qualification obtained at <strong>IAL Sardegna</strong>.</li>
+              <li>Ayurveda Practitioner Diploma from <strong>EFOA</strong>.</li>
+              <li>Specialization in Ayurvedic massages, holistic therapies, and water bodywork.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mission-card" style={`background-image: url(${filosofiaBg.src});`}>
+          <div class="mission-overlay"></div>
+          <div class="mission-content">
+            <h3>My Philosophy</h3>
+            <p class="quote">
+              "Each session is not just a massage, but a unique ritual where empathetic listening and ancient traditions merge to restore harmony and deep quietness."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Automatic Review Carousel -->
+    <section class="reviews-section">
+      <div class="container">
+        <div class="reviews-header">
+          <span class="sub-badge">Testimonials</span>
+          <h2>Words from Our Guests</h2>
+          <p class="subtitle">The warmth and trust of those who chose our wellness rituals.</p>
+        </div>
+      </div>
+
+      <div class="carousel-container">
+        <div class="carousel-track">
+          {duplicatedReviews.map((review) => (
+            <div class="review-card">
+              <div class="stars">
+                {Array.from({ length: review.rating }).map(() => (
+                  <span class="star">★</span>
+                ))}
+              </div>
+              <p class="review-text">"{review.text}"</p>
+              <div class="review-author">
+                <strong>{review.name}</strong>
+                <span class="google-badge">Google Review</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <MobileActionBar />
+</Layout>
+
+<style>
+  /* SFONDO BIANCO PURO PER LA PAGINA */
+  main {
+    background-color: #ffffff !important;
+  }
+
+  .page-header {
+    padding: 5rem 0 3rem 0;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .sub-badge {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+    color: #c4a724 !important;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  .section {
+    padding: 4rem 0 2rem 0;
+    background-color: transparent;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: stretch;
+  }
+
+  .bio-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #c4a724 !important;
+  }
+
+  .bio-content p {
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+  }
+
+  .qualifiche-box {
+    margin-top: 2.5rem;
+    background-color: var(--accent-light);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .qualifiche-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+  }
+
+  .qualifiche-box ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+  }
+
+  .qualifiche-box li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .mission-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(44, 42, 41, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100%;
+    border: none !important;
+  }
+
+  .mission-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(44, 42, 41, 0.55);
+    z-index: 1;
+  }
+
+  .mission-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .mission-card h3 {
+    color: #c4a724;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .quote {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 0;
+    color: #fcfbfa;
+  }
+
+  .reviews-section {
+    padding: 3rem 0 6rem 0;
+    background-color: transparent;
+    overflow: hidden;
+  }
+
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .reviews-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #c4a724 !important;
+  }
+
+  .carousel-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 2.5rem;
+    width: max-content;
+    animation: scrollCarousel 35s linear infinite;
+  }
+
+  .carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes scrollCarousel {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 1.25rem));
+    }
+  }
+
+  .review-card {
+    background-color: #faf8f5;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(44, 42, 41, 0.04);
+    width: 380px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none !important;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(196, 167, 36, 0.12);
+  }
+
+  .stars {
+    color: #c4a724;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .review-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .review-author {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(196, 167, 36, 0.15);
+    padding-top: 1rem;
+  }
+
+  .review-author strong {
+    color: var(--text-main);
+    font-size: 0.95rem;
+  }
+
+  .google-badge {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 900px) {
+    .grid-2 {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .mission-card {
+      min-height: 350px;
+    }
+    .review-card {
+      width: 300px;
+      padding: 2rem;
+    }
+    .carousel-track {
+      animation-duration: 25s;
+    }
+  }
+</style>

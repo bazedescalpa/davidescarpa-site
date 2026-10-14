@@ -1,0 +1,37 @@
+:root {
+  --bg-color: #FBF9F6;       /* Bianco panna/sabbia molto chiaro */
+  --text-main: #2C2A29;      /* Tortora scuro / grigio profondo per testi */
+  --text-muted: #6B6560;     /* Grigio medio per sottotitoli */
+  --accent: #A38B74;         /* Oro antico / bronzo delicato */
+  --accent-light: #EFECE6;   /* Sfondo card o sezioni in evidenza */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.6;
+}
+
+* {
+  box-sizing: inherit;
+}

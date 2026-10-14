@@ -1,0 +1,335 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileActionBar from '../../components/MobileActionBar.astro';
+import { Image } from 'astro:assets';
+
+import trattamento1 from '../../assets/shirodhara.webp';
+import trattamento2 from '../../assets/pindasweda.webp'; 
+import trattamento3 from '../../assets/evento.webp';
+import trattamento4 from '../../assets/massaggi_personalizzati.webp';
+import trattamento5 from '../../assets/carosello2.webp';
+import trattamento6 from '../../assets/fanghi.webp';
+
+const treatments = [
+  {
+    name: "Shirodhara",
+    desc: "Das Königsditual des Ayurveda. Ein kontinuierlicher, feiner Strahl warmen Kräuteröls fliesst sanft auf die Stirn (drittes Auge), ideal zum Beruhigen des Geistes sowie bei Ängsten, Schlafstörungen und tiefem Stress.",
+    tag: "Höchstes Ritual",
+    image: trattamento1
+  },
+  {
+    name: "Pindasweda",
+    desc: "Tiefenwirksame Massage durch sanftes Einklopfen warmen Baumwollbeuteln, die mit Heilkräutern, Gewürzen und Reismedizin gefüllt sind. Hervorragend zur Nährung des Gewebes und zur Entlastung der Gelenke.",
+    tag: "Vitalisierend",
+    image: trattamento2
+  },
+  {
+    name: "Vasti",
+    desc: "Gezielte lokale Behandlungen (wie Kati Vasti für den Lendenbereich oder Janu Vasti für die Knie), bei denen ein Ring aus Teig warmes medizinisches Öl direkt auf der betroffenen Stelle hält.",
+    tag: "Zielgerichtet",
+    image: trattamento3
+  },
+  {
+    name: "Swedana",
+    desc: "Ayurvedisches Kräuterdampfbad. Während der Körper mit kräuterangereichertem Dampf verwöhnt wird, bleibt der Kopf kühl. Fördert die Entgiftung und entspannt die Muskeln.",
+    tag: "Detox",
+    image: trattamento4
+  },
+  {
+    name: "Ayurveda-Programme & Kuren",
+    desc: "Ganzheitliche Programme basierend auf der jahrtausendealten Lebenswissenschaft, um die Doshas auszugleichen und dauerhafte Harmonie zwischen Körper und Geist wiederherzustellen.",
+    tag: "Ganzheitliche Philosophie",
+    image: trattamento5
+  },
+  {
+    name: "Totes Meer Schlammbehandlung",
+    desc: "Reinigende und remineralisierende Behandlung, die die einzigartigen Eigenschaften des Schlamms nutzt, um die Haut zu klären, die Mikrozirkulation anzuregen und überschüssige Flüssigkeiten abzuleiten.",
+    tag: "Reinigend",
+    image: trattamento6
+  }
+];
+---
+
+<Layout 
+  title="Ayurvedische Behandlungen & Rituale | Ayuwellness Cagliari & Villasimius" 
+  description="Entdecken Sie ayurvedische Behandlungen: Shirodhara, Pindasweda, Vasti, Swedana, Ayurveda-Programme und Totes Meer Schlammbehandlungen in Cagliari und Villasimius."
+>
+  <Header />
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="sub-badge">Ayurvedische Exzellenz</span>
+        <h1>Spezielle Behandlungen & Rituale</h1>
+        <p class="subtitle">Traditionelle Techniken begleiten Sie auf einer Reise tiefer Regeneration.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="treatments-vertical-list">
+          {treatments.map((t, index) => (
+            <div class={`treatment-card-large ${index % 2 !== 0 ? 'reversed' : ''}`}>
+              <div class="treatment-image-wrapper">
+                <Image 
+                  src={t.image} 
+                  alt={t.name} 
+                  width={800} 
+                  format="webp" 
+                  quality={90}
+                  class="treatment-img"
+                />
+              </div>
+              <div class="treatment-content">
+                <span class="treatment-tag">{t.tag}</span>
+                <h2>{t.name}</h2>
+                <p>{t.desc}</p>
+                <div class="card-footer">
+                  <a 
+                    href={`https://wa.me/393270567128?text=Hallo,%20ich%20möchte%20folgende%20Behandlung%20buchen:%20${encodeURIComponent(t.name)}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="book-link"
+                  >
+                    Behandlung buchen &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="cta-banner">
+          <h3>Benötigen Sie Hilfe bei der Auswahl des idealen Rituals?</h3>
+          <p>Kontaktieren Sie uns für eine persönliche Beratung oder erfahren Sie, welche Behandlung am besten zu Ihren Bedürfnissen passt.</p>
+          <a 
+            href="https://wa.me/393270567128?text=Hallo,%20ich%20wünsche%20eine%20persönliche%20Beratung." 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-primary"
+          >
+            Federica kontaktieren
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <MobileActionBar />
+</Layout>
+
+<style>
+  main {
+    background-color: #ffffff !important;
+  }
+
+  .page-header {
+    padding: 5rem 0 2rem 0;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .sub-badge {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+    color: #c4a724 !important; 
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section {
+    padding: 3rem 0 6rem 0;
+    background-color: transparent;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .treatments-vertical-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    margin-bottom: 5rem;
+  }
+
+  .treatment-card-large {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .treatment-card-large.reversed .treatment-image-wrapper {
+    order: 2;
+    border-radius: 0 20px 20px 0 !important;
+  }
+
+  .treatment-card-large.reversed .treatment-content {
+    order: 1;
+  }
+
+  .treatment-image-wrapper {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 20px 0 0 20px; 
+    box-shadow: 0 20px 40px rgba(44, 42, 41, 0.06);
+    background: transparent;
+    border: none !important;
+  }
+
+  .treatment-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .treatment-card-large:hover .treatment-img {
+    transform: scale(1.03);
+  }
+
+  .treatment-content {
+    padding: 1rem 0;
+    background: transparent;
+    border: none !important;
+  }
+
+  .treatment-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .treatment-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #c4a724 !important;
+  }
+
+  .treatment-content p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .card-footer {
+    border: none !important;
+    padding-top: 0;
+    background: transparent;
+  }
+
+  .book-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .book-link:hover {
+    color: var(--accent);
+  }
+
+  .cta-banner {
+    background-color: var(--accent-light);
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .cta-banner h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+  }
+
+  .cta-banner p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #fff;
+    padding: 0.9rem 2.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(163, 139, 116, 0.2);
+    transition: transform 0.2s ease;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .treatment-card-large, 
+    .treatment-card-large.reversed {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .treatment-card-large .treatment-image-wrapper,
+    .treatment-card-large.reversed .treatment-image-wrapper {
+      order: 1 !important;
+      height: 260px;
+      border-radius: 20px 20px 0 0 !important; 
+    }
+    
+    .treatment-card-large .treatment-content {
+      order: 2 !important;
+      padding: 0 0.5rem 2rem 0.5rem !important;
+    }
+
+    .treatment-content h2 {
+      font-size: 1.75rem;
+    }
+  }
+</style>

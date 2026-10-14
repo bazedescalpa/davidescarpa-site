@@ -1,0 +1,184 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileActionBar from '../../components/MobileActionBar.astro';
+
+const posts = [
+  {
+    title: "Les bienfaits du massage Shirodhara contre le stress et l'insomnie",
+    date: "15 Mai 2026",
+    excerpt: "Découvrez comment le filet d'huile tiède continu sur le front agit sur le système nerveux pour apporter un profond apaisement mental.",
+    category: "Ayurvéda"
+  },
+  {
+    title: "Bien-être en Sardaigne : pourquoi choisir les soins ayurvédiques à Cagliari",
+    date: "28 Avril 2026",
+    excerpt: "Un voyage à la découverte des rituels traditionnels conçus pour rééquilibrer les doshas Vata, Pitta et Kapha au fil des saisons.",
+    category: "Bien-être"
+  },
+  {
+    title: "Massage à domicile à Villasimius : relaxation totale sous le soleil",
+    date: "10 Juin 2026",
+    excerpt: "Comment profiter de l'été sur la côte sud-est de la Sardaigne en associant le plaisir de la mer aux bienfaits d'un soin holistique.",
+    category: "Villasimius"
+  }
+];
+---
+
+<Layout 
+  title="Blog & Articles sur le Bien-être | Ayuwellness" 
+  description="Articles, conseils et réflexions sur l'Ayurvéda, les massages relaxants et les rituels de bien-être à Cagliari et Villasimius par Federica Ennas."
+>
+  <Header />
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="sub-badge">Conseils & Articles</span>
+        <h1>Le Blog du Bien-être</h1>
+        <p class="subtitle">Articles et réflexions sur l'art de l'Ayurvéda et le soin de soi.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="blog-grid">
+          {posts.map((post) => (
+            <article class="blog-card">
+              <div class="blog-meta">
+                <span class="blog-category">{post.category}</span>
+                <span class="blog-date">{post.date}</span>
+              </div>
+              <h2>{post.title}</h2>
+              <p>{post.excerpt}</p>
+              <div class="blog-footer">
+                <span class="read-more">Lire l'article &rarr;</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <MobileActionBar />
+</Layout>
+
+<style>
+  main {
+    background-color: #ffffff !important;
+  }
+
+  .page-header {
+    padding: 5rem 0 3rem 0;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .sub-badge {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+    color: #c4a724 !important;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  .section {
+    padding: 4rem 0 6rem 0;
+    background-color: transparent;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .blog-card {
+    background-color: #faf8f5;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(44, 42, 41, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none !important;
+  }
+
+  .blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    font-size: 0.8rem;
+  }
+
+  .blog-category {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .blog-date {
+    color: var(--text-muted);
+  }
+
+  .blog-card h2 {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+    line-height: 1.4;
+  }
+
+  .blog-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .blog-footer {
+    border-top: 1px solid rgba(196, 167, 36, 0.15);
+    padding-top: 1.25rem;
+    margin-top: auto;
+  }
+
+  .read-more {
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+
+  .blog-card:hover .read-more {
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

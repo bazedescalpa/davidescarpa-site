@@ -1,0 +1,747 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro'; 
+import Footer from '../../components/Footer.astro';
+import MobileActionBar from '../../components/MobileActionBar.astro';
+
+import carosello1 from '../../assets/carosello1.webp';
+import carosello2 from '../../assets/carosello2.webp';
+import carosello3 from '../../assets/carosello3.webp';
+import carosello4 from '../../assets/carosello4.webp';
+
+import cagliariBg from '../../assets/cagliari.webp';
+import villasimiusBg from '../../assets/villasimius.webp';
+import shirodharaBg from '../../assets/shirodhara.webp';
+import pindaswedaBg from '../../assets/pindasweda.webp';
+import massaggiPersonalizzatiBg from '../../assets/massaggi_personalizzati.webp';
+import quieteBg from '../../assets/quiete.webp';
+
+const heroSlides = [
+  {
+    image: carosello1.src,
+    title: "Massages Ayurvédiques à Cagliari",
+  },
+  {
+    image: carosello2.src,
+    title: "Soins ayurvédiques personnalisés",
+  },
+  {
+    image: carosello3.src,
+    title: "Votre rituel bien-être en Sardaigne",
+  },
+  {
+    image: carosello4.src,
+    title: "Massages à domicile à Villasimius",
+  },
+];
+---
+
+<Layout title="Ayuwellness | Luxe pour l'Esprit à Cagliari et Villasimius">
+  <Header />
+
+  <main>
+    <!-- Sezione Hero con Carosello -->
+    <section class="hero">
+      {heroSlides.map((slide, index) => (
+        <div 
+          class={`hero-slide ${index === 0 ? 'active' : ''}`} 
+          style={`background-image: url(${slide.image});`}
+        >
+          <div class="container hero-content">
+            <h1>{slide.title}</h1>
+            <p class="hero-text">
+              Massages ayurvédiques personnalisés et soins holistiques pour retrouver l'équilibre entre le corps et l'esprit. À Cagliari en hiver et à Villasimius en été.
+            </p>
+            <div class="hero-buttons">
+              <a href="/fr/massages" class="btn-primary btn-equal">Découvrir les massages</a>
+              <a href="/fr/soins" class="btn-primary btn-equal">Découvrir les soins</a>
+              <a href="https://wa.me/393270567128" target="_blank" rel="noopener noreferrer" class="btn-secondary">Réserver</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- Sezione Presentazione / Studio con Sfondo Bianco, Testi scuri e link giallo -->
+    <section class="section about-preview">
+      <div class="container grid-2">
+        <div class="about-text">
+          <h2 class="section-title-gold">Une expérience de bien-être authentique</h2>
+          <p>
+            Le studio <strong>Ayuwellness</strong> offre un havre de paix à Cagliari, dédié à ceux qui souhaitent relâcher les tensions, éliminer les toxines et se régénérer grâce aux principes de l'ancienne tradition ayurvédique.
+          </p>
+          <p>
+            Chaque parcours est conçu sur mesure en fonction de la constitution individuelle (doshas Vata, Pitta, Kapha), en combinant des huiles médicinales et des techniques de massage expertes.
+          </p>
+          <a href="/fr/a-propos" class="text-link">Rencontrer Federica Ennas &rarr;</a>
+        </div>
+        
+        <!-- Cornice con Video HTML5 Nativo senza bagliore -->
+        <div class="video-frame-container">
+          <div class="video-glow-wrapper">
+            <div class="video-frame">
+              <video 
+                id="native-video"
+                autoplay 
+                muted 
+                playsinline 
+                preload="auto">
+                <source src="/video/ayurveda.mp4" type="video/mp4" />
+                Votre navigateur ne prend pas en charge la balise vidéo.
+              </video>
+              <!-- Scudo protettivo totale che impedisce interazioni o click -->
+              <div class="video-shield"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testo stagionale con a capo iniziale e margine superiore -->
+      <div class="container season-text-container">
+        <p class="season-description">
+          <br>Pendant la saison hivernale, les soins sont dispensés principalement au cœur de Cagliari, tandis qu'en période estivale, le service s'étend également à Villasimius, offrant une expérience de bien-être ayurvédique en totale harmonie avec les rythmes saisonniers et les besoins des visiteurs.
+        </p>
+      </div>
+
+      <!-- Sotto: Due colonne con le card in alto e le descrizioni complete sotto -->
+      <div class="container locations-grid-container">
+        <div class="locations-grid">
+          
+          <!-- Colonna Cagliari -->
+          <div class="location-column">
+            <div class="location-card" style={`background-image: url(${cagliariBg.src});`}>
+              <div class="location-overlay"></div>
+              <div class="location-content">
+                <h3>Cagliari</h3>
+                <p>Le refuge de paix hivernal, où retrouver l'équilibre intérieur entre le rythme de la ville et le soin de soi.</p>
+              </div>
+            </div>
+            <div class="location-description">
+              <p>La santé et le bien-être occupent une place de plus en plus centrale, et pour répondre à ce besoin, Ayuwellness luxe pour l'esprit a ouvert son studio à Cagliari.</p>
+              <p>L'Ayurvéda est un ancien système de médecine indienne basé sur l'équilibre entre l'esprit, le corps et l'âme, et les massages ayurvédiques représentent le moyen le plus naturel d'atteindre cette harmonie.</p>
+              <p>Le studio situé Via Basilicata 61, dans le quartier de La Vega, propose un large éventail de soins personnalisés pour chaque besoin. Des techniques traditionnelles et des produits naturels sont utilisés pour réduire le stress, améliorer la circulation sanguine et soulager les douleurs articulaires.</p>
+              <p>L'environnement accueillant et relaxant invite à s'immerger dans une expérience unique de bien-être ayurvédique. Tous les soins sont réalisés avec des huiles biologiques et des produits naturels pour garantir la plus haute qualité. Le studio collabore avec des B&B, des hôtels, des yachts et des structures touristiques, et est facilement accessible aux visiteurs de la capitale sarde.</p>
+            </div>
+          </div>
+
+          <!-- Colonna Villasimius -->
+          <div class="location-column">
+            <div class="location-card" style={`background-image: url(${villasimiusBg.src});`}>
+              <div class="location-overlay"></div>
+              <div class="location-content">
+                <h3>Villasimius</h3>
+                <p>Le bien-être estival entre plages et détente, pour régénérer le corps et l'esprit pendant les vacances dans le sud de la Sardaigne.</p>
+              </div>
+            </div>
+            <div class="location-description">
+              <p>Le plaisir de recevoir un massage ayurvédique dans le confort de sa propre villa ou directement sur un yacht. Ayuwellness apporte le bien-être à domicile dans les zones de Villasimius, Solanas, Torre delle Stelle, Costa Rei, Muravera et Castiadas.</p>
+              <p>À l'extérieur sous la lune ou dans une loggia aérée pendant la journée, chaque moment devient parfait pour s'offrir un soin régénérant.</p>
+              <p>Le service est disponible sur réservation et nécessite un environnement calme, confortable et silencieux.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sezione Trattamenti in Evidenza -->
+    <section class="section bg-light">
+      <div class="container text-center">
+        <h2 class="section-title-gold">Rituels Ayurvédiques</h2>
+        <p class="section-subtitle">Du Shirodhara au Pindasweda : des soins ciblés pour chaque besoin.</p>
+        
+        <div class="cards-grid">
+          <a href="/fr/massages" class="service-card service-card-image" style={`background-image: url(${shirodharaBg.src}); text-decoration: none;`}>
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+              <h3>Shirodhara</h3>
+              <p>Le flux constant d'huile tiède sur le front pour apaiser profondément l'esprit et le système nerveux.</p>
+            </div>
+          </a>
+          <a href="/fr/massages" class="service-card service-card-image" style={`background-image: url(${pindaswedaBg.src}); text-decoration: none;`}>
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+              <h3>Pindasweda</h3>
+              <p>Massage aux pochons chauds d'herbes médicinales, idéal pour dénouer les tensions et purifier.</p>
+            </div>
+          </a>
+          <a href="/fr/massages" class="service-card service-card-image" style={`background-image: url(${massaggiPersonalizzatiBg.src}); text-decoration: none;`}>
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+              <h3>Massages Personnalisés</h3>
+              <p>Rituels sur mesure basés sur l'écoute de la personne et l'harmonisation des doshas.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="action-buttons-container">
+          <a href="/fr/massages" class="btn-primary btn-equal">Explorer le menu complet des massages</a>
+          <a href="/fr/soins" class="btn-primary btn-equal">Explorer le menu complet des soins</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sezione Eventi / L'angolo della coccola -->
+    <section class="section">
+      <div class="container grid-2 align-center">
+        <div>
+          <span class="sub-badge">Pour vos événements spéciaux</span>
+          <h2 class="section-title-gold" style="text-align: left;">Le coin cocooning</h2>
+          <p>
+            Rendez vos mariages, anniversaires ou fêtes privées inoubliables. Offrez à vos invités un moment de détente exclusif de 10 minutes dédié aux mains ou aux pieds avec des huiles naturelles et une serviette chaude.
+          </p>
+          <a href="https://wa.me/393270567128?text=Bonjour,%20je%20souhaite%20des%20informations%20ou%20réserver%20un%20événement%20avec%20Le%20coin%20cocooning." target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-top: 1.5rem; display: inline-block;">Réserver un événement</a>
+        </div>
+        <div class="highlight-box" style={`background-image: url(${quieteBg.src});`}>
+          <div class="highlight-overlay"></div>
+          <p class="quote">"Le véritable luxe n'est pas matériel : c'est prendre soin de soi et s'offrir un espace de pure quiétude."</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <MobileActionBar />
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length > 0) {
+      let currentIndex = 0;
+      const intervalTime = 5000;
+
+      function nextSlide() {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }
+
+      setInterval(nextSlide, intervalTime);
+    }
+
+    const video = document.getElementById('native-video') as HTMLVideoElement;
+    if (video) {
+      video.currentTime = 3;
+
+      video.addEventListener('timeupdate', () => {
+        if (video.currentTime >= 9.0) {
+          video.currentTime = 3;
+          video.play();
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  .quote {
+    font-family: 'Outfit', sans-serif;
+    font-style: normal;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 550px;
+    padding: 7rem 0;
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+
+  .hero-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .sub-badge {
+    display: inline-block;
+    background-color: rgba(196, 167, 36, 0.2);
+    color: #c4a724;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(196, 167, 36, 0.4);
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 4.4rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    min-height: calc(1.2 * 3em);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-text {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 2.5rem;
+    max-width: 650px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .btn-primary {
+    background-color: #c4a724;
+    color: #fff;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .btn-primary:hover {
+    background-color: #b0951e;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .btn-secondary:hover,
+  .btn-secondary:focus {
+    background-color: #ffffff;
+    color: #242424;
+    transform: translateY(-2px);
+  }
+
+  .action-buttons-container {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-equal {
+    flex: 1;
+    min-width: 280px;
+    max-width: 420px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .bg-light {
+    background-color: #F4EFEA;
+  }
+
+  .about-preview {
+    background-color: #ffffff;
+  }
+
+  .section-title-gold {
+    color: #c4a724 !important;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .about-preview .about-text p {
+    color: #2c2c2c;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .about-preview .text-link {
+    color: #c4a724;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: opacity 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .about-preview .text-link:hover {
+    opacity: 0.8;
+  }
+
+  .season-text-container {
+    max-width: 800px;
+    margin: 6rem auto 2.5rem auto;
+    text-align: center;
+  }
+
+  .season-description {
+    color: #2c2c2c;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .locations-grid-container {
+    margin-top: 2rem;
+  }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 0;
+  }
+
+  .location-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .location-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s ease;
+  }
+
+  .location-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .location-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: 1;
+  }
+
+  .location-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+  }
+
+  .location-card h3 {
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .location-card p {
+    color: #f0f0f0;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.5;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .location-description {
+    padding: 0 0.5rem;
+  }
+
+  .location-description p {
+    color: #2c2c2c;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .location-description p:last-child {
+    margin-bottom: 0;
+  }
+
+  .video-frame-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .video-glow-wrapper {
+    width: 100%;
+    max-width: 560px;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  }
+
+  .video-frame {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    border: none;
+    background-color: #000;
+  }
+
+  .video-frame video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .video-shield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: transparent;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-center h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .section-subtitle {
+    color: #2c2c2c;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .cards-grid {
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .service-card-image {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card-image:hover {
+    transform: translateY(-4px);
+  }
+
+  .service-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: 1;
+  }
+
+  .service-card-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+  }
+
+  .service-card-image h3 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .service-card-image p {
+    color: #f0f0f0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .highlight-box {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .highlight-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+  }
+
+  .quote {
+    position: relative;
+    z-index: 2;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.6;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      min-height: 520px;
+      padding: 5rem 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 5rem 0 5rem 0;
+      min-height: 600px;
+    }
+    .grid-2 {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .locations-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-buttons,
+    .action-buttons-container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.75rem;
+    }
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary,
+    .action-buttons-container .btn-primary,
+    .btn-equal {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      padding: 0.8rem 1rem;
+    }
+    .hero h1 {
+      font-size: 2.1rem;
+      min-height: auto;
+      margin-bottom: 1rem;
+    }
+    .hero-text {
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,145 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileActionBar from '../../components/MobileActionBar.astro';
+
+const galleryItems = [
+  { title: "Studio Cagliari - Espace Relaxation", category: "Cagliari" },
+  { title: "Rituel Shirodhara", category: "Soins" },
+  { title: "Huiles aux Plantes & Produits Bio", category: "Ayurvéda" },
+  { title: "Massage à Domicile à Villasimius", category: "Villasimius" },
+  { title: "Le Cocon De Douceur", category: "Événements" },
+  { title: "Atmosphère & Détails", category: "Studio" }
+];
+---
+
+<Layout 
+  title="Galerie & Atmosphère | Ayuwellness Cagliari & Villasimius" 
+  description="Découvrez les photos du studio Ayuwellness à Cagliari, nos soins ayurvédiques et l'atmosphère de nos services estivaux à Villasimius."
+>
+  <Header />
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="sub-badge">Atmosphère & Espaces</span>
+        <h1>Galerie</h1>
+        <p class="subtitle">Aperçu de notre studio e de nos rituels de bien-être.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="gallery-grid">
+          {galleryItems.map((item) => (
+            <div class="gallery-item">
+              <div class="image-placeholder">
+                <span class="gallery-category">{item.category}</span>
+                <p class="gallery-title">{item.title}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <MobileActionBar />
+</Layout>
+
+<style>
+  main {
+    background-color: #ffffff !important;
+  }
+
+  .page-header {
+    padding: 5rem 0 3rem 0;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .sub-badge {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+    color: #c4a724 !important;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  .section {
+    padding: 4rem 0 6rem 0;
+    background-color: transparent;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .gallery-item {
+    background-color: #faf8f5;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none !important;
+    box-shadow: 0 20px 40px rgba(44, 42, 41, 0.04);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-4px);
+  }
+
+  .image-placeholder {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .gallery-category {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--text-main);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

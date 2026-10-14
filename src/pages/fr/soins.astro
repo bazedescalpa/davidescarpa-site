@@ -1,0 +1,335 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import MobileActionBar from '../../components/MobileActionBar.astro';
+import { Image } from 'astro:assets';
+
+import trattamento1 from '../../assets/shirodhara.webp';
+import trattamento2 from '../../assets/pindasweda.webp'; 
+import trattamento3 from '../../assets/evento.webp';
+import trattamento4 from '../../assets/massaggi_personalizzati.webp';
+import trattamento5 from '../../assets/carosello2.webp';
+import trattamento6 from '../../assets/fanghi.webp';
+
+const treatments = [
+  {
+    name: "Shirodhara",
+    desc: "Le soin royal de l'Ayurvéda. Un filet continu e tiède d'huile aux plantes coule doucement sur le front (troisième œil), idéal pour apaiser le système nerveux, libérer l'anxiété e l'insomnie.",
+    tag: "Rituel Suprême",
+    image: trattamento1
+  },
+  {
+    name: "Pindasweda",
+    desc: "Massage profond réalisé en tapotant le corps avec de petits pochons en coton chaud remplis d'herbes médicinales, d'épices e de riz. Excellent pour nourrir les tissus e dénouer les raideurs.",
+    tag: "Revitalisant",
+    image: trattamento2
+  },
+  {
+    name: "Vasti",
+    desc: "Soins localisés di précision (comme le Kati Vasti pour le bas du dos ou le Janu Vasti pour les genoux) où un digue de pâte contient de l'huile tiède pour un soulagement ciblé.",
+    tag: "Ciblé",
+    image: trattamento3
+  },
+  {
+    name: "Swedana",
+    desc: "Bain de vapeur ayurvédique aux herbes. Tandis que le corps profite della vapeur balsamique, la tête reste au frais. Favorise une détoxification profonde e détend les muscles.",
+    tag: "Détox",
+    image: trattamento4
+  },
+  {
+    name: "Parcours et Cures Ayurvédiques",
+    desc: "Programmes holistiques complets basés sur la science millénaire della vie, conçus pour rééquilibrer les Doshas et restaurer une harmonie durable entre le corps e l'esprit.",
+    tag: "Philosophie Holistique",
+    image: trattamento5
+  },
+  {
+    name: "Soin aux Boues de la Mer Morte",
+    desc: "Soin purifiant et reminéralisant exploitant les propriétés uniques des boues naturelles pour purifier la peau, stimuler la microcirculation e raffermir les tissus.",
+    tag: "Purifiant",
+    image: trattamento6
+  }
+];
+---
+
+<Layout 
+  title="Soins & Rituels Ayurvédiques | Ayuwellness Cagliari & Villasimius" 
+  description="Découvrez nos soins ayurvédiques avancés : Shirodhara, Pindasweda, Vasti, Swedana, cures Ayurvéda et boues de la Mer Morte à Cagliari et Villasimius."
+>
+  <Header />
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="sub-badge">L'Excellence Ayurvédique</span>
+        <h1>Soins e Rituels D'Exception</h1>
+        <p class="subtitle">Des techniques traditionnelles pour vous accompagner dans un voyage de régénération profonde.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="treatments-vertical-list">
+          {treatments.map((t, index) => (
+            <div class={`treatment-card-large ${index % 2 !== 0 ? 'reversed' : ''}`}>
+              <div class="treatment-image-wrapper">
+                <Image 
+                  src={t.image} 
+                  alt={t.name} 
+                  width={800} 
+                  format="webp" 
+                  quality={90}
+                  class="treatment-img"
+                />
+              </div>
+              <div class="treatment-content">
+                <span class="treatment-tag">{t.tag}</span>
+                <h2>{t.name}</h2>
+                <p>{t.desc}</p>
+                <div class="card-footer">
+                  <a 
+                    href={`https://wa.me/393270567128?text=Bonjour,%20je%20souhaite%20réserver%20le%20soin:%20${encodeURIComponent(t.name)}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="book-link"
+                  >
+                    Réserver le soin &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="cta-banner">
+          <h3>Besoin de conseils pour choisir le rituel idéal ?</h3>
+          <p>Contactez-nous pour une consultation personnalisée ou pour découvrir le parcours le plus adapté à vos besoins.</p>
+          <a 
+            href="https://wa.me/393270567128?text=Bonjour,%20je%20souhaite%20une%20consultation%20personnalisée." 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-primary"
+          >
+            Contacter Federica
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <MobileActionBar />
+</Layout>
+
+<style>
+  main {
+    background-color: #ffffff !important;
+  }
+
+  .page-header {
+    padding: 5rem 0 2rem 0;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .sub-badge {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+    color: #c4a724 !important; 
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section {
+    padding: 3rem 0 6rem 0;
+    background-color: transparent;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .treatments-vertical-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    margin-bottom: 5rem;
+  }
+
+  .treatment-card-large {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .treatment-card-large.reversed .treatment-image-wrapper {
+    order: 2;
+    border-radius: 0 20px 20px 0 !important;
+  }
+
+  .treatment-card-large.reversed .treatment-content {
+    order: 1;
+  }
+
+  .treatment-image-wrapper {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 20px 0 0 20px; 
+    box-shadow: 0 20px 40px rgba(44, 42, 41, 0.06);
+    background: transparent;
+    border: none !important;
+  }
+
+  .treatment-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .treatment-card-large:hover .treatment-img {
+    transform: scale(1.03);
+  }
+
+  .treatment-content {
+    padding: 1rem 0;
+    background: transparent;
+    border: none !important;
+  }
+
+  .treatment-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .treatment-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #c4a724 !important;
+  }
+
+  .treatment-content p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .card-footer {
+    border: none !important;
+    padding-top: 0;
+    background: transparent;
+  }
+
+  .book-link {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .book-link:hover {
+    color: var(--accent);
+  }
+
+  .cta-banner {
+    background-color: var(--accent-light);
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .cta-banner h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+  }
+
+  .cta-banner p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #fff;
+    padding: 0.9rem 2.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(163, 139, 116, 0.2);
+    transition: transform 0.2s ease;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .treatment-card-large, 
+    .treatment-card-large.reversed {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .treatment-card-large .treatment-image-wrapper,
+    .treatment-card-large.reversed .treatment-image-wrapper {
+      order: 1 !important;
+      height: 260px;
+      border-radius: 20px 20px 0 0 !important; 
+    }
+    
+    .treatment-card-large .treatment-content {
+      order: 2 !important;
+      padding: 0 0.5rem 2rem 0.5rem !important;
+    }
+
+    .treatment-content h2 {
+      font-size: 1.75rem;
+    }
+  }
+</style>

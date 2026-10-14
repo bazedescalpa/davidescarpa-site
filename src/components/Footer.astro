@@ -1,0 +1,153 @@
+---
+import { Image } from 'astro:assets';
+import logoImage from '../assets/logo.webp';
+import { useTranslations } from '../i18n/ui';
+
+// Rileva la lingua corrente (default 'it')
+const lang = Astro.currentLocale || 'it';
+const t = useTranslations(lang as any);
+
+// Calcola il prefisso della lingua per i link del logo e le pagine legali
+const prefix = lang === 'it' ? '' : `/${lang}`;
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col footer-brand">
+      <a href={prefix === '' ? '/' : `${prefix}/`} class="footer-logo-link">
+        <Image 
+          src={logoImage} 
+          alt="Ayuwellness Lusso per la Mente" 
+          width={150} 
+          format="webp" 
+          quality={90}
+        />
+      </a>
+      <p class="footer-desc">{t('footer.desc')}</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>{t('footer.sedi')}</h4>
+      <p><strong>Cagliari:</strong> Via Basilicata, 61<br><em>({t('footer.cagliari')})</em></p>
+      <p><strong>Villasimius / Costa Rei:</strong><br><em>({t('footer.villasimius')})</em></p>
+    </div>
+
+    <div class="footer-col">
+      <h4>{t('nav.contatti')}</h4>
+      <p>Tel / WhatsApp: <a href="https://wa.me/393270567128" target="_blank" rel="noopener noreferrer">+39 327 056 7128</a></p>
+      <p>Email: <a href="mailto:info@ayuwellness.it">info@ayuwellness.it</a></p>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {currentYear} AYU WELLNESS di Federica Ennas - P.IVA 03837740921 • {t('footer.rights')}</p>
+    <div class="footer-legal">
+      <a href={`${prefix}/privacy-policy`}>Privacy Policy</a>
+      <span>•</span>
+      <a href={`${prefix}/cookie-policy`}>Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--text-main, #242424);
+    color: var(--bg-color, #ffffff);
+    padding: 4rem 0 2rem 0;
+    margin-top: 5rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  /* CENTRAGGIO PRIMA COLONNA (LOGO E SCRITTA) */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo-link img {
+    height: auto;
+    max-width: 140px; /* Logo leggermente più piccolo ed elegante */
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .footer-desc {
+    color: #a8a29e;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .footer-col h4 {
+    font-size: 1.1rem;
+    color: #c4a724; /* Color oro coordinato */
+    margin-bottom: 1rem;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .footer-col p {
+    color: #a8a29e;
+    font-size: 0.9rem;
+    margin: 0 0 0.75rem 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .footer-col a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover {
+    color: #c4a724;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: #a8a29e;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .footer-legal a {
+    color: #a8a29e;
+    text-decoration: none;
+  }
+
+  .footer-legal a:hover {
+    color: #fff;
+  }
+</style>

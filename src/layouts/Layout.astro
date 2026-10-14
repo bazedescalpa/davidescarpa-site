@@ -1,0 +1,132 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const { 
+  title = "Ayuwellness | Lusso per la Mente a Cagliari e Villasimius", 
+  description = "Trattamenti ayurvedici personalizzati, massaggi rilassanti e rituali di benessere a Cagliari e Villasimius. Ritrova l'equilibrio tra corpo e mente.",
+  image = "/logo.webp",
+  canonicalURL = Astro.url.href
+} = Astro.props;
+
+// Schema.org per LocalBusiness (HealthAndBeautyBusiness)
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  "name": "Ayuwellness Lusso per la Mente",
+  "image": "https://ayuwellness.pages.dev/logo.webp",
+  "@id": "https://ayuwellness.pages.dev",
+  "url": "https://ayuwellness.pages.dev",
+  "telephone": "+393270567128",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Basilicata, 61",
+    "addressLocality": "Cagliari",
+    "postalCode": "09049",
+    "addressRegion": "CA",
+    "addressCountry": "IT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 39.2238,
+    "longitude": 9.1216
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "09:00",
+    "closes": "20:00"
+  },
+  "sameAs": [
+    "https://ayuwellness.pages.dev"
+  ]
+};
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Primary -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <!-- Google Fonts: Outfit + Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif; 
+    color: #2c2c2c;
+    background-color: #242424; /* Sfondo scuro coordinato con l'header per evitare flash bianchi */
+    overflow-x: hidden;
+  }
+
+  /* Spazio di compensazione per l'header fisso */
+  main {
+    padding-top: 218px; 
+    background-color: #faf8f5; /* Mantiene lo sfondo chiaro solo per il contenuto principale */
+  }
+
+  @media (max-width: 900px) {
+    main {
+      padding-top: 95px; 
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6, 
+  .title, .subtitle, .heading {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .section-title-gold {
+    color: #c4a724 !important;
+    font-family: 'Outfit', sans-serif;
+  }
+</style>

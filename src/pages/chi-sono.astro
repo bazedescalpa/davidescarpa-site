@@ -1,0 +1,390 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileActionBar from '../components/MobileActionBar.astro';
+
+import filosofiaBg from '../assets/evento.webp';
+
+// Recensioni reali selezionate
+const reviews = [
+  {
+    name: "Paolo A.",
+    text: "Centro massaggi eccellente nel cuore di Cagliari!Ambiente raffinato, profumato e molto rilassante. Ho apprezzato tantissimo la professionalità e la cortesia di Federica, sempre attenta. Il trattamento è stato impeccabile: massaggio intenso ma allo stesso tempo delicato, perfetto per ritrovare benessere ed energia. Consigliatissimo a chi cerca qualità, relax e professionalità. Una vera oasi di benessere!",
+    rating: 5
+  },
+  {
+    name: "Luigi V.",
+    text: "Ho avuto il piacere di provare un massaggio ayurvedico da Federica e l’esperienza è stata davvero eccezionale. Fin dal primo momento si percepisce grande professionalità, attenzione e passione per il suo lavoro. Il trattamento è stato profondamente rilassante, ma allo stesso tempo efficace nel sciogliere tensioni e stress. Federica riesce a personalizzare il massaggio in base alle esigenze, creando un ambiente accogliente e rigenerante. ...",
+    rating: 5
+  },
+  {
+    name: "Maurizio B.",
+    text: "Ottima esperienza olistica. Federica è stata molto brava e professionale. La struttura è moderna, pulita e ben organizzata. Il menù massaggi molto ricco e innovativo. Ho provato un massaggio ayurvedico e devo dire che sono stati 40 minuti di vero relax e wellness. Consigliatissimo !",
+    rating: 5
+  },
+  {
+    name: "Alessandro S.",
+    text: "Entrare da Ayuwellness significa concedersi un momento di vero benessere. Lo studio è meraviglioso: ambienti caldi, armoniosi e curati con gusto, dove ogni dettaglio richiama immediatamente l’atmosfera rilassante dei trattamenti ayurvedici. Si percepisce subito una sensazione di tranquillità e accoglienza che rende l’esperienza speciale già dal primo istante. Federica è una professionista eccezionale: preparata, gentile...",
+    rating: 5
+  },
+  {
+    name: "Gloria P.",
+    text: "Bellissima esperienza, Federica é professionale e simpatica, mi son trovata subito a mio agio con lei. Ho adorato il massaggio gambe e piedi, di un’ora, durante il quale Federica si é focalizzata su ogni singola parte , a lungo. Non avevo mai provato un massaggio ayurvedico e son molto contenta mi sia stato regalato. Sicuramente tornerò. Locale accogliente e molto pulito.",
+    rating: 5
+  }
+];
+
+// Duplichiamo l'array per garantire un loop infinito fluido e senza interruzioni della giostra
+const duplicatedReviews = [...reviews, ...reviews];
+---
+
+<Layout 
+  title="Chi Sono - Federica Ennas | Ayuwellness Cagliari" 
+  description="Operatrice ayurveda certificata con oltre dieci anni di esperienza tra Forte Village e spa internazionali. Scopri il percorso di Federica Ennas."
+>
+  <Header />
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="sub-badge">Mi presento</span>
+        <h1>Federica Ennas</h1>
+        <p class="subtitle">Operatrice ayurveda certificata e professionista del benessere.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-2">
+        <div class="bio-content">
+          <h2>Oltre dieci anni di esperienza al servizio del benessere</h2>
+          <p>
+            Il mio percorso nel mondo del benessere nasce dalla profonda convinzione che il corpo e la mente siano un tutt'uno in costante dialogo. Per prendersi cura dell'individuo in modo autentico è necessario unire la sensibilità all'ascolto con una solida preparazione tecnica.
+          </p>
+          <p>
+            Nel corso degli anni ho sviluppato la mia esperienza professionale lavorando in contesti d'eccellenza, tra cui il prestigioso <strong>Forte Village</strong>, navi da crociera e spa internazionali di alto livello.
+          </p>
+          
+          <div class="qualifiche-box">
+            <h3>Formazione e Qualifiche</h3>
+            <ul>
+              <li>Qualifica di Estetista conseguita presso lo <strong>IAL Sardegna</strong>.</li>
+              <li>Diploma di Operatore Ayurveda presso l'<strong>EFOA</strong>.</li>
+              <li>Specializzazione in massaggi ayurvedici, trattamenti olistici e massaggio in acqua.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mission-card" style={`background-image: url(${filosofiaBg.src});`}>
+          <div class="mission-overlay"></div>
+          <div class="mission-content">
+            <h3>La mia filosofia</h3>
+            <p class="quote">
+              "Ogni seduta non è un semplice massaggio, ma un rituale unico in cui l'ascolto e le tradizioni millenarie si fondono per restituire armonia e quiete profonda."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sezione Giostra Recensioni Automatica -->
+    <section class="reviews-section">
+      <div class="container">
+        <div class="reviews-header">
+          <span class="sub-badge">Dicono di noi</span>
+          <h2>Le Parole dei Nostri Ospiti</h2>
+          <p class="subtitle">L'affetto e la fiducia di chi ha scelto i nostri rituali di benessere.</p>
+        </div>
+      </div>
+
+      <div class="carousel-container">
+        <div class="carousel-track">
+          {duplicatedReviews.map((review) => (
+            <div class="review-card">
+              <div class="stars">
+                {Array.from({ length: review.rating }).map(() => (
+                  <span class="star">★</span>
+                ))}
+              </div>
+              <p class="review-text">"{review.text}"</p>
+              <div class="review-author">
+                <strong>{review.name}</strong>
+                <span class="google-badge">Recensione Google</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <MobileActionBar />
+</Layout>
+
+<style>
+  /* SFONDO BIANCO PURO PER LA PAGINA */
+  main {
+    background-color: #ffffff !important;
+  }
+
+  .page-header {
+    padding: 5rem 0 3rem 0;
+    text-align: center;
+    background-color: transparent;
+  }
+
+  .sub-badge {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  /* TITOLO PRINCIPALE CON IL COLORE #c4a724 */
+  .page-header h1 {
+    font-size: clamp(2.5rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+    color: #c4a724 !important;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  .section {
+    padding: 4rem 0 2rem 0;
+    background-color: transparent;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: stretch;
+  }
+
+  /* TITOLI INTERNI CON IL COLORE #c4a724 */
+  .bio-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #c4a724 !important;
+  }
+
+  .bio-content p {
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+  }
+
+  /* BOX QUALIFICHE COORDINATO E SENZA BORDI */
+  .qualifiche-box {
+    margin-top: 2.5rem;
+    background-color: var(--accent-light);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .qualifiche-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+  }
+
+  .qualifiche-box ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+  }
+
+  .qualifiche-box li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* CARD FILOSOFIA CON ANGOLI ARROTONDATI E OMBRA SOFFICE */
+  .mission-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(44, 42, 41, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100%;
+    border: none !important;
+  }
+
+  .mission-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(44, 42, 41, 0.55);
+    z-index: 1;
+  }
+
+  .mission-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .mission-card h3 {
+    color: #c4a724;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .quote {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 0;
+    color: #fcfbfa;
+  }
+
+  /* SEZIONE GIOSTRA RECENSIONI (AUTOMATICA) */
+  .reviews-section {
+    padding: 3rem 0 6rem 0;
+    background-color: transparent;
+    overflow: hidden; /* Nasconde l'uscita delle card fuori schermo */
+  }
+
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .reviews-header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #c4a724 !important;
+  }
+
+  .carousel-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    /* Effetto sfumatura morbida ai lati per dare profondità alla giostra */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 2.5rem;
+    width: max-content;
+    animation: scrollCarousel 35s linear infinite;
+  }
+
+  /* Metti in pausa la giostra se l'utente ci passa sopra con il mouse per leggerla comodamente */
+  .carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes scrollCarousel {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 1.25rem));
+    }
+  }
+
+  .review-card {
+    background-color: #faf8f5;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(44, 42, 41, 0.04);
+    width: 380px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none !important;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  /* Effetto visivo di messa a fuoco dinamica sulle card al passaggio del mouse */
+  .review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(196, 167, 36, 0.12);
+  }
+
+  .stars {
+    color: #c4a724;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .review-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .review-author {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(196, 167, 36, 0.15);
+    padding-top: 1rem;
+  }
+
+  .review-author strong {
+    color: var(--text-main);
+    font-size: 0.95rem;
+  }
+
+  .google-badge {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 900px) {
+    .grid-2 {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .mission-card {
+      min-height: 350px;
+    }
+    .review-card {
+      width: 300px;
+      padding: 2rem;
+    }
+    .carousel-track {
+      animation-duration: 25s; /* Leggermente più rapida su mobile */
+    }
+  }
+</style>

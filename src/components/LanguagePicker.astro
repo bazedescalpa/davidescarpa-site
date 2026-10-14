@@ -1,0 +1,212 @@
+---
+import { languages } from '../i18n/ui';
+
+// Rileva la lingua corrente dall'URL di Astro
+const currentLang = Astro.currentLocale || 'it';
+const pathname = Astro.url.pathname;
+
+// Funzione helper per calcolare l'URL corretto della lingua di destinazione
+function getLocalizedPath(targetLang: string) {
+  // Rimuove il prefisso lingua attuale se presente (/en, /de, /fr)
+  let cleanPath = pathname.replace(/^\/(en|de|fr)(\/|$)/, '/');
+
+  // Normalizza rimuovendo eventuali slash doppi o finali superflui per il confronto
+  cleanPath = cleanPath.replace(/\/+$/, '') || '/';
+
+  // 1. Gestione della Home Page
+  if (cleanPath === '/' || cleanPath === '') {
+    if (targetLang === 'it') return '/';
+    return `/${targetLang}/`;
+  }
+
+  // 2. Mappatura personalizzata per la pagina Chi Sono / About / Über mich / À propos
+  if (cleanPath === '/chi-sono' || cleanPath === '/about' || cleanPath === '/ueber-mich' || cleanPath === '/a-propos') {
+    if (targetLang === 'it') return '/chi-sono';
+    if (targetLang === 'en') return '/en/about';
+    if (targetLang === 'de') return '/de/ueber-mich';
+    if (targetLang === 'fr') return '/fr/a-propos';
+  }
+
+  // 3. Mappatura personalizzata per la pagina massaggi
+  if (cleanPath === '/massaggi' || cleanPath === '/massages' || cleanPath === '/massagen') {
+    if (targetLang === 'it') return '/massaggi';
+    if (targetLang === 'en') return '/en/massages';
+    if (targetLang === 'de') return '/de/massagen';
+    if (targetLang === 'fr') return '/fr/massages';
+  }
+
+  // 4. Mappatura personalizzata per la pagina trattamenti
+  if (cleanPath === '/trattamenti' || cleanPath === '/treatments' || cleanPath === '/behandlungen' || cleanPath === '/soins') {
+    if (targetLang === 'it') return '/trattamenti';
+    if (targetLang === 'en') return '/en/treatments';
+    if (targetLang === 'de') return '/de/behandlungen';
+    if (targetLang === 'fr') return '/fr/soins';
+  }
+
+  // 5. Mappatura personalizzata per la pagina gallery / galerie
+  if (cleanPath === '/gallery' || cleanPath === '/galerie') {
+    if (targetLang === 'it') return '/gallery';
+    if (targetLang === 'en') return '/en/gallery';
+    if (targetLang === 'de') return '/de/galerie';
+    if (targetLang === 'fr') return '/fr/galerie';
+  }
+
+  // 6. Mappatura personalizzata per la pagina contatti
+  if (cleanPath === '/contatti' || cleanPath === '/contact' || cleanPath === '/kontakt') {
+    if (targetLang === 'it') return '/contatti';
+    if (targetLang === 'en') return '/en/contact';
+    if (targetLang === 'de') return '/de/kontakt';
+    if (targetLang === 'fr') return '/fr/contact';
+  }
+
+  // 7. Fallback per tutte le altre pagine (mantiene la struttura pulita)
+  if (targetLang === 'it') {
+    return cleanPath;
+  }
+  return `/${targetLang}${cleanPath.startsWith('/') ? cleanPath : '/' + cleanPath}`;
+}
+---
+
+<div class="lang-dropdown">
+  <button type="button" class="lang-current" aria-expanded="false" aria-label="Seleziona lingua">
+    <span class="lang-code">{currentLang.toUpperCase()}</span>
+    <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  
+  <div class="lang-menu">
+    {Object.entries(languages).map(([code, label]) => {
+      const isActive = code === currentLang;
+      return (
+        <a 
+          href={getLocalizedPath(code)} 
+          class:list={['lang-option', { active: isActive }]}
+        >
+          {code.toUpperCase()} <span class="lang-full-name">({label})</span>
+        </a>
+      );
+    })}
+  </div>
+</div>
+
+<script>
+  // Gestisce tutte le istanze del LanguagePicker (desktop e mobile) tramite classi
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdowns = document.querySelectorAll('.lang-dropdown');
+
+    dropdowns.forEach((dropdown) => {
+      const toggleBtn = dropdown.querySelector('.lang-current');
+      const menu = dropdown.querySelector('.lang-menu');
+
+      if (toggleBtn && menu) {
+        toggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          // Chiude eventuali altri menu aperti
+          dropdowns.forEach((d) => {
+            if (d !== dropdown) {
+              d.querySelector('.lang-menu')?.classList.remove('show');
+              d.querySelector('.lang-current')?.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          const isOpen = menu.classList.toggle('show');
+          toggleBtn.setAttribute('aria-expanded', isOpen.toString());
+        });
+      }
+    });
+
+    // Chiude tutti i menu se si clicca all'esterno
+    document.addEventListener('click', () => {
+      dropdowns.forEach((dropdown) => {
+        dropdown.querySelector('.lang-menu')?.classList.remove('show');
+        dropdown.querySelector('.lang-current')?.setAttribute('aria-expanded', 'false');
+      });
+    });
+  });
+</script>
+
+<style>
+  .lang-dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .lang-current {
+    background: transparent;
+    border: 1px solid rgba(196, 167, 36, 0.3);
+    color: #ffffff;
+    padding: 0.35rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+  }
+
+  .lang-current:hover {
+    border-color: #c4a724;
+    color: #c4a724;
+  }
+
+  .dropdown-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .lang-dropdown:focus-within .dropdown-arrow,
+  .lang-menu.show ~ .lang-current .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .lang-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+    min-width: 130px;
+    overflow: hidden;
+    padding: 0.3rem 0;
+  }
+
+  .lang-menu.show {
+    display: block;
+  }
+
+  .lang-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.8rem;
+    color: #a8a29e;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .lang-full-name {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    font-weight: 400;
+  }
+
+  .lang-option:hover {
+    background-color: rgba(196, 167, 36, 0.15);
+    color: #c4a724;
+  }
+
+  .lang-option.active {
+    color: #c4a724;
+    background-color: rgba(196, 167, 36, 0.08);
+    font-weight: 700;
+  }
+</style>
