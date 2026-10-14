@@ -42,11 +42,18 @@ const currentYear = new Date().getFullYear();
   </div>
 
   <div class="container footer-bottom">
-    <p>© {currentYear} AYU WELLNESS di Federica Ennas - P.IVA 03837740921 • {t('footer.rights')}</p>
-    <div class="footer-legal">
-      <a href={`${prefix}/privacy-policy`}>Privacy Policy</a>
+    <div class="footer-bottom-col">
+      <p>© {currentYear} AYUWELLNESS di Federica Ennas <br> P.IVA 03837740921 • {t('footer.rights')}</p>
+    </div>
+
+    <div class="footer-bottom-col footer-credit">
+      <p>Creato da <a href="https://davidescarpa.com" target="_blank" rel="noopener noreferrer">Davide Scarpa Soluzioni Web</a></p>
+    </div>
+
+    <div class="footer-bottom-col footer-legal">
+      <a href={`${prefix}/privacy-policy`} target="_blank" rel="noopener noreferrer">Privacy Policy</a>
       <span>•</span>
-      <a href={`${prefix}/cookie-policy`}>Cookie Policy</a>
+      <a href={`${prefix}/cookie-policy`} target="_blank" rel="noopener noreferrer">Cookie Policy</a>
     </div>
   </div>
 </footer>
@@ -72,8 +79,8 @@ const currentYear = new Date().getFullYear();
     margin-bottom: 3rem;
   }
 
-  /* CENTRAGGIO PRIMA COLONNA (LOGO E SCRITTA) */
-  .footer-brand {
+  /* CENTRAGGIO COLONNE SUPERIORI */
+  .footer-col {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,7 +94,7 @@ const currentYear = new Date().getFullYear();
 
   .footer-logo-link img {
     height: auto;
-    max-width: 140px; /* Logo leggermente più piccolo ed elegante */
+    max-width: 140px;
     width: 100%;
     display: block;
     margin: 0 auto;
@@ -102,7 +109,7 @@ const currentYear = new Date().getFullYear();
 
   .footer-col h4 {
     font-size: 1.1rem;
-    color: #c4a724; /* Color oro coordinato */
+    color: #c4a724;
     margin-bottom: 1rem;
     font-family: 'Outfit', sans-serif;
   }
@@ -124,30 +131,77 @@ const currentYear = new Date().getFullYear();
     color: #c4a724;
   }
 
+  /* CENTRAGGIO E FORZATURA TESTI SEZIONE INFERIORE */
   .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    gap: 1.5rem;
     font-size: 0.85rem;
     color: #a8a29e;
     font-family: 'Montserrat', sans-serif;
+    text-align: center;
+  }
+
+  .footer-bottom-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer-bottom-col p {
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  /* STILE LINK CREDITI DAVIDE SCARPA */
+  .footer-credit a {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-credit a:hover {
+    color: #c4a724;
+    text-decoration: none;
   }
 
   .footer-legal {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 0.75rem;
+    text-align: center;
   }
 
   .footer-legal a {
     color: #a8a29e;
     text-decoration: none;
+    transition: color 0.2s ease;
   }
 
   .footer-legal a:hover {
     color: #fff;
+  }
+
+  /* RESPONSIVE PER MOBILE */
+  @media (max-width: 768px) {
+    .footer-bottom {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    
+    .site-footer {
+      padding-bottom: 6rem; /* Aggiunge spazio extra in basso per evitare che la barra copra i contenuti */
+    }
   }
 </style>

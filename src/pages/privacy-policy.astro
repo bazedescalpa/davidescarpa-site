@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { useTranslations } from '../i18n/ui';
+
+const lang = Astro.currentLocale || 'it';
+const t = useTranslations(lang as any);
+---
+
+<Layout title="Privacy Policy - Ayuwellness">
+  <main class="legal-page">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p class="last-update">Ultimo aggiornamento: Gennaio 2026</p>
+
+      <section>
+        <h2>1. Titolare del Trattamento dei Dati</h2>
+        <p>Il Titolare del trattamento dei dati è <strong>AYUWELLNESS di Federica Ennas</strong> (P.IVA 03837740921), con sede a Cagliari in Via Basilicata, 61.</p>
+        <p>Email di contatto: <a href="mailto:info@ayuwellness.it">info@ayuwellness.it</a></p>
+      </section>
+
+      <section>
+        <h2>2. Tipologie di Dati Raccolti</h2>
+        <p>Tra i Dati Personali raccolti da questo sito web, in modo autonomo o tramite terze parti, ci sono: Cookie, dati di utilizzo, nome, numero di telefono e indirizzo email forniti volontariamente dall'utente tramite i moduli di contatto o i collegamenti rapidi (WhatsApp/Telefono).</p>
+      </section>
+
+      <section>
+        <h2>3. Finalità del Trattamento</h2>
+        <p>I Dati dell'Utente sono raccolti per consentire al Titolare di fornire i propri servizi, nonché per le seguenti finalità: Contattare l'Utente, gestione delle richieste di prenotazione o informazioni sui trattamenti e protezione dello spam.</p>
+      </section>
+
+      <section>
+        <h2>4. Modalità e Luogo del Trattamento</h2>
+        <p>Il Titolare adotta le opportune misure di sicurezza volte ad impedire l'accesso, la divulgazione, la modifica o la distruzione non autorizzate dei Dati Personali. Il trattamento viene effettuato mediante strumenti informatici e/o telematici.</p>
+      </section>
+
+      <section>
+        <h2>5. Diritti dell'Utente</h2>
+        <p>Gli Utenti possono esercitare determinati diritti con riferimento ai Dati trattati dal Titolare, tra cui il diritto di accesso, rettifica, cancellazione e opposizione al trattamento dei propri dati personali scrivendo a <a href="mailto:info@ayuwellness.it">info@ayuwellness.it</a>.</p>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 10rem 0 5rem 0;
+    background-color: #ffffff; /* Sfondo bianco */
+    color: #242424;            /* Testo scuro principale */
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    color: #c4a724;            /* Titolo principale in oro */
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .last-update {
+    text-align: center;
+    color: #666666;            /* Grigio scuro per la data */
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+  }
+
+  h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.3rem;
+    color: #c4a724;            /* Sottotitoli in oro */
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(196, 167, 36, 0.3);
+    padding-bottom: 0.5rem;
+  }
+
+  p {
+    color: #333333;            /* Testo scuro ben leggibile su sfondo bianco */
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+
+  strong {
+    color: #242424;
+    font-weight: 700;
+  }
+
+  a {
+    color: #c4a724;            /* Link in oro */
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: #242424;            /* Link scuri al passaggio del mouse */
+  }
+</style>
